@@ -9,13 +9,9 @@ app = Dash(__name__)
 
 # assume you have a "long-form" data frame
 # see https://plotly.com/python/px-arguments/ for more options
-df = pd.DataFrame({
-    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
-    "Amount": [4, 1, 2, 2, 4, 5],
-    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
-})
+df = pd.read_csv('https://raw.githubusercontent.com/globaldothealth/monkeypox/main/latest.csv')
 
-fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
+fig = px.scatter(df, x="City", y="Country", color="Status")
 
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
